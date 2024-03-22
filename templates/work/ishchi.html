@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load mathfilters %}
+{% block body %}
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-8">
+
+                <table class="table">
+                    <form action="{% url 'work:list' %}">
+                        <div class="form-outline mb-4" data-mdb-input-init>
+                            <input type="search" class="form-control" id="datatable-search-input" name="q"
+                                   value="{{ param }}" placeholder="Search">
+                        </div>
+                        <div id="datatable">
+                        </div>
+                    </form>
+                    <thead>
+                    <tr>
+                        <th scope="col">Kromka</th>
+                        <th scope="col">Sana</th>
+                        <th scope="col">Metr</th>
+                        <th scope="col">Ism</th>
+                        <th scope="col">Narx</th>
+                    </tr>
+                    </thead>
+                    {% for client in clients %}
+                        <tr>
+                            <td>{{ client.edge_id }} {{ client.color_id }}</td>
+                            <td>{{ client.created_at }}</td>
+                            <td>{{ client.metr }} Metr</td>
+                            <td>{{ client.name }}</td>
+                            <td>{{ 150 }} * {{ client.metr }} = {{ 150|mul:client.metr }}</td>
+
+                        </tr>
+                    {% endfor %}
+
+                </table>
+
+            </div>
+        </div>
+    </main>
+
+{% endblock %}

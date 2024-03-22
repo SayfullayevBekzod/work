@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load mathfilters %}
+{% block body %}
+
+    <main role="main" class="container">
+
+        <div class="row">
+            <div class="col-md-8 ">
+                <table class="table ">
+                    <form action="{% url 'work:list' %}">
+                        <div class="form-outline mb-4" data-mdb-input-init>
+                            <input type="search" class="form-control" id="datatable-search-input" name="q"
+                                   value="{{ param }}" placeholder="Search">
+                        </div>
+                        <div id="datatable">
+                        </div>
+                    </form>
+
+                    {% for contact in page_obj %}
+                        {{ contact.full_name|upper }}<br>
+                    {% endfor %}
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-end">
+                            {% if page_obj.has_previous %}
+                                <li class="page-item border border-primary rounded-left">
+                                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" tabindex="-1">Orqaga</a>
+                                </li>
+                            {% endif %}
+                            {% if page_obj.has_next %}
+                                <li class="page-item border border-primary rounded-right">
+                                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">Oldinga</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                    <br>
+                    <thead >
+                    <tr>
+                        <th scope="col">Kromka</th>
+                        <th scope="col">Sana</th>
+                        <th scope="col">Metr</th>
+                        <th scope="col">Ism</th>
+                        <th scope="col">Narx</th>
+                    </tr>
+                    </thead>
+                    {% for client in clients %}
+                        <tr>
+                            <td>{{ client.edge_id }} {{ client.color_id }}</td>
+                            <td>{{ client.created_at }}</td>
+                            <td>{{ client.metr }} metr</td>
+                            <td>{{ client.name }}</td>
+                            <td>{{ client.edge_id.price }} * {{ client.metr }}
+                                = {{ client.edge_id.price|mul:client.metr }} so'm
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}

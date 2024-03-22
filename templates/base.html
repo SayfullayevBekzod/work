@@ -116,8 +116,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarToggle">
                 <div class="navbar-nav mr-auto">
-                    <a class="nav-item nav-link" href="{% url 'work:client' %}">Mijoz Kromka</a>
+                    <a class="nav-item nav-link" href="{% url 'work:client'  %}">Mijoz Kromka</a>
                     <a class="nav-item nav-link" href="{% url 'work:client-saw' %}">Mijoz Arra </a>
+                    {% if request.user.is_authenticated %}
                     <div class="navbar-nav">
                         <a class="nav-item nav-link" href="{% url 'work:create-client' %}">Yangi Mijoz
                             Kromka</a>
@@ -125,6 +126,7 @@
                             Arra</a>
                         <a class="nav-item nav-link" href="{% url 'work:work' %}">Works</a>
                     </div>
+                    {% endif %}
                 </div>
                 <!-- Navbar Right Side -->
             </div>

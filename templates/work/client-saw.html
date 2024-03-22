@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load mathfilters %}
+{% block body %}
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-8">
+
+                <table class="table">
+                    <form action="{% url 'work:list-saw' %}">
+                        <div class="form-outline mb-4" data-mdb-input-init>
+                            <input type="search" class="form-control" id="datatable-search-input" name="saw"
+                                   value="{{ param }}" placeholder="Search">
+                        </div>
+                        <div id="datatable">
+                        </div>
+                    </form>
+                    {% for contact in page_obj %}
+                        {{ contact.full_name|upper }}<br>
+                    {% endfor %}
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-end">
+                            {% if page_obj.has_previous %}
+                                <li class="page-item border border-primary rounded-left">
+                                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" tabindex="-1">Orqaga</a>
+                                </li>
+                            {% endif %}
+                            {% if page_obj.has_next %}
+                                <li class="page-item border border-primary rounded-right">
+                                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">Oldinga</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                    <br>
+                    <thead>
+                    <tr>
+                        <th scope="col">Ism</th>
+                        <th scope="col">Sana</th>
+                        <th scope="col">List</th>
+                        <th scope="col">Rangi</th>
+                        <th scope="col">List Nomi</th>
+                        <th scope="col">Narxi</th>
+                    </tr>
+                    </thead>
+                    {% for saws in saw %}
+
+                        <tbody>
+                        <tr>
+                            <td>{{ saws.name }}</td>
+                            <td>{{ saws.created_at }}</td>
+                            <td>{{ saws.list_list }} ta List</td>
+                            <td>{{ saws.color_id }}</td>
+                            <td>{{ saws.laminate }}</td>
+                            <td>{{ saws.list_list }} * {{ saws.price.price }}
+                                = {{ saws.list_list|mul:30000 }} so'm
+                            </td>
+                        </tr>
+                        </tbody>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+    </main>
+{% endblock %}

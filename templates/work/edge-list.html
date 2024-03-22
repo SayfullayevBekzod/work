@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block body %}
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Kromka</th>
+                        <th scope="col">Soni</th>
+                    </tr>
+                    </thead>
+                    {% for edge in edges %}
+                        <tbody>
+                        <tr>
+                            <td>{{ edge.edge_id }}</td>
+                            <td>{{ edge.name }}</td>
+                            <td>{{ edge.number }}</td>
+                        </tbody>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+    </main>
+{% endblock %}
