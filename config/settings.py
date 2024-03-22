@@ -24,11 +24,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "apps.ish.apps.IshConfig",
+    'apps.ish.apps.IshConfig',
     "crispy_forms",
     "crispy_bootstrap4",
     "mathfilters",
-    "django_filters",
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -46,7 +46,8 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "templates"],
+        "DIRS": [BASE_DIR / 'templates']
+        ,
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -65,13 +66,13 @@ WSGI_APPLICATION = "config.wsgi.application"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "work",
-        "USER": "postgres",
-        "PASSWORD": "0000",
-        "HOST": "localhost",
-        "PORT": "5432",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'work',
+        'USER': 'postgres',
+        'PASSWORD': '0000',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
