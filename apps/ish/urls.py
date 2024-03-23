@@ -9,7 +9,7 @@ from apps.ish.views import (
     client_saw_create,
     ListView,
     ListSawView,
-    WorkView,
+    WorkView
 )
 
 app_name = "work"
